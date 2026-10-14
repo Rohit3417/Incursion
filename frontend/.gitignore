@@ -1,0 +1,21 @@
+node_modules
+.next
+.DS_Store
+tsconfig.tsbuildinfo
+
+# personal AI-agent context files
+AGENTS.md
+CLAUDE.md
+CONTEXT.md
+DESIGN.md
+DAY_*.md
+PHASE_*.md
+
+context.md
+prd.md
+design.md
+agent.md
+skills/ui-ux-skill.md
+
+# archived legacy code
+_legacy/
