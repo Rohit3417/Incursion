@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = 'force-dynamic';
 import { useState, useEffect } from 'react';
 import { getConfigs, listRuns, compareConfigurations } from '@/lib/api';
 import { ConfigRecord, RunSummary, ConfigComparisonRow } from '@/lib/types';
