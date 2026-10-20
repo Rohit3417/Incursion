@@ -1,0 +1,1 @@
+{"status": "OK", "username": "paulirish", "public_repos": 385, "original_repos_count": 25, "total_stars": 18120, "languages": ["Shell", "JavaScript", "TypeScript", "HTML"], "approximate_commits_12m": 375}

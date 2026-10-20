@@ -1,0 +1,1 @@
+{"status": "OK", "username": "karandave98", "public_repos": 18, "original_repos_count": 14, "total_stars": 0, "languages": ["TypeScript", "Java", "HTML"], "approximate_commits_12m": 210}

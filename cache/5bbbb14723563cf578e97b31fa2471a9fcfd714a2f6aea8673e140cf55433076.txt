@@ -1,0 +1,1 @@
+{"status": "OK", "username": "sindresorhus", "public_repos": 1145, "original_repos_count": 98, "total_stars": 147793, "languages": ["TypeScript", "Python", "Shell", "JavaScript", "CSS", "Swift"], "approximate_commits_12m": 1470}

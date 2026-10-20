@@ -1,0 +1,45 @@
+# A string used to distinguish different Supabase projects on the same host. Defaults to the working directory name when running `supabase init`.
+project_id = "incursion_track3"
+
+[api]
+port = 54321
+# Extra schemas to add to the search_path of every request.
+extra_search_path = ["public", "extensions"]
+# The maximum number of rows returns from a view, table, or stored procedure. Limits payload size for accidental or malicious requests.
+max_rows = 1000
+
+[db]
+port = 54322
+# The database major version to use. This has to be the same as your remote database's. Run `SHOW server_version;` on the remote database to check.
+major_version = 15
+
+[db.pooler]
+enabled = false
+port = 54329
+pool_mode = "transaction"
+
+[studio]
+enabled = true
+port = 54323
+
+# In-Memory Storage for local development emails
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+port = 54326
+
+[auth]
+enabled = true
+port = 54327
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://localhost:3000"]
+jwt_expiry = 3600
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false

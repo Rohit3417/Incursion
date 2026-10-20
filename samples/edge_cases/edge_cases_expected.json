@@ -1,0 +1,9 @@
+{
+  "description": "Expected outputs for edge-case teams (solo, 6-member, missing resumes, invalid GitHub, cross-team duplicates)",
+  "cases": [
+    {"team_id": "EDGE_SOLO", "expected_status": "Shortlisted", "expected_warning": "Solo team"},
+    {"team_id": "EDGE_LARGE", "expected_status": "Shortlisted", "expected_warning": "Large team (5+ members)"},
+    {"team_id": "EDGE_BAD_GH", "expected_status": "Needs review", "expected_flag": "INVALID"},
+    {"team_id": "EDGE_DUP", "expected_status": "Shortlisted", "expected_warning": "Cross-team duplicate email"}
+  ]
+}

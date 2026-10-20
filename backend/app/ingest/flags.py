@@ -1,0 +1,7 @@
+class StatusFlag:
+    OK = "OK"
+    MISSING = "MISSING"
+    INVALID = "INVALID"
+    UNAVAILABLE = "UNAVAILABLE"
+    UNCERTAIN = "UNCERTAIN"
+    API_FAILED = "API_FAILED"

@@ -1,0 +1,1 @@
+{"status": "OK", "username": "addyosmani", "public_repos": 363, "original_repos_count": 69, "total_stars": 165694, "languages": ["Astro", "TypeScript", "Rich Text Format", "HTML", "Python", "ApacheConf", "Shell", "JavaScript", "CSS"], "approximate_commits_12m": 1035}

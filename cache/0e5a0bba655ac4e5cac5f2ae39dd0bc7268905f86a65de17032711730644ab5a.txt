@@ -1,0 +1,1 @@
+[{"name": "resume_data", "value": null, "status": "MISSING", "source": "input", "confidence": 1.0}, {"name": "github_commits", "value": 1470, "status": "OK", "source": "github_api", "confidence": 0.85}, {"name": "portfolio_valid", "value": false, "status": "MISSING", "source": "portfolio_check", "confidence": 0.0}]

@@ -1,0 +1,18 @@
+{
+  "name": "Projects Heavy",
+  "is_preset": true,
+  "config_json": {
+    "criteria": [
+      {"name": "Technical Skills", "weight": 15, "keywords": []},
+      {"name": "Projects and Experience", "weight": 40, "keywords": []},
+      {"name": "GitHub Activity", "weight": 15, "keywords": []},
+      {"name": "Achievements", "weight": 10, "keywords": []},
+      {"name": "Portfolio", "weight": 20, "keywords": []}
+    ],
+    "eligibility_rules": [],
+    "top_x": 10,
+    "aggregation": "mean",
+    "missing_policy": "redistribute",
+    "tie_break": ["team_score", "team_id"]
+  }
+}

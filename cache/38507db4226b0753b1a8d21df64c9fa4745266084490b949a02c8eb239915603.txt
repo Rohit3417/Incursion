@@ -1,0 +1,1 @@
+{"status": "OK", "username": "yashthakkar14", "public_repos": 14, "original_repos_count": 10, "total_stars": 1, "languages": ["HTML", "JavaScript", "Python", "Ruby"], "approximate_commits_12m": 150}
