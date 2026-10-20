@@ -40,6 +40,7 @@ export default function ConfigPage() {
   useEffect(() => {
     const storedDatasetId = localStorage.getItem('current_dataset_id');
     if (!storedDatasetId) {
+      alert('⚠️ Please upload a file first before coming to this tab.');
       router.push('/upload');
       return;
     }
