@@ -33,7 +33,7 @@ graph TD
 ### A. Viewing the Live Deployment
 * **Live Frontend Web App (Vercel):** `https://incursion-ten.vercel.app/upload`
 * **Live Backend Interactive API Docs (Render Swagger UI):** `https://incursion-backend.onrender.com/docs`
-* **Live Backend Health Check:** `https://incursion-backend.onrender.com/api/upload`[cite: 4, 17]
+* **Live Backend Health Check:** `https://incursion-backend.onrender.com/health`[cite: 4, 17]
 
 *(Note: Because the backend is hosted on Render's free tier, it spins down after 15 minutes of inactivity. Your first action after an idle period may take **30–50 seconds** while the container wakes up).*
 
