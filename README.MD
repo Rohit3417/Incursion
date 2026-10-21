@@ -27,6 +27,73 @@ graph TD
 * **Deployment:** Vercel (Frontend), Render (Backend), Supabase Cloud (Database), Docker & Docker Compose[cite: 8, 17].
 
 ---
+## 🧮 Formulas & Point Calculation Mechanics
+
+Every candidate and team score is computed deterministically by the Python scoring engine (`scoring/`). There are no black-box machine learning weights or hidden adjustments.
+
+---
+
+### 1. Raw Signal Normalization (`0–100` Scale)
+Before weighted scoring occurs, raw extracted signals (counts, matched keywords, lists) are normalized onto a uniform **0 to 100** scale per criterion (`signal_mapping.py`):
+
+- **Technical Skills:** 
+  $$\text{Score} = \min\left(\frac{\text{Matched Keywords}}{5} \times 100, 100\right)$$
+  *(Capped at 100 points once 5 or more organizer-defined keywords are matched).*
+
+- **Projects & Experience:** 
+  $$\text{Score} = \min\left(\frac{\text{Projects Found}}{3} \times 100, 100\right)$$
+  *(Capped at 100 points for 3+ verified projects).*
+
+- **GitHub Activity (12 Months):** 
+  $$\text{Score} = \min\left(\frac{\text{Approximate Commits (12m)}}{500} \times 100, 100\right)$$
+  *(Capped at 100 points at 500+ commits).*
+
+- **Achievements:** 
+  $$\text{Score} = \min\left(\frac{\text{Achievements Found}}{2} \times 100, 100\right)$$
+
+- **Portfolio:** 
+  $$\text{Score} = \begin{cases} 100.0 & \text{if portfolio URL is reachable and contains project sections} \\ 0.0 & \text{otherwise} \end{cases}$$
+
+---
+
+### 2. Missing-Data Redistribution Formula (`missing.py`)
+If a candidate has missing or unreachable links (`MISSING` or `UNAVAILABLE`), the engine applies the active Missing-Data Policy. Under the default **`Redistribute`** policy, the weight of missing criteria is proportionally redistributed across the candidate's available criteria so they are not unfairly penalized:
+
+1. Let $C_{\text{all}}$ be the set of all criteria and $W_i$ be their original weights ($\sum_{i \in C_{\text{all}}} W_i = 100$).
+2. Let $C_{\text{missing}}$ be the subset of criteria where data is missing ($V_i = \text{MISSING}$).
+3. Let $C_{\text{present}}$ be the subset of criteria with valid scores.
+4. The new adjusted weight $W'_i$ for present criteria is scaled up:
+   $$W'_i = W_i \times \left(\frac{100}{\sum_{j \in C_{\text{present}}} W_j}\right)$$
+   *(For all missing criteria $k \in C_{\text{missing}}$, $W'_k = 0$ and $V'_k = 0$).*
+
+---
+
+### 3. Individual Member Score Formula (`weighted.py`)
+Once normalized values ($V'_i$) and adjusted weights ($W'_i$) are established, each member's total score is calculated as the sum of their weighted criterion contributions:
+
+$$\text{Member Score} = \sum_{i=1}^{n} \left(\frac{V'_i}{100} \times W'_i\right)$$
+
+---
+
+### 4. Team Score Aggregation Formula (`aggregate.py`)
+Individual member scores are aggregated into a single team score based on the chosen aggregation method:
+
+- **Arithmetic Mean (Default):**
+  $$\text{Team Score} = \frac{1}{m} \sum_{j=1}^{m} \text{Member Score}_j$$
+  where $m$ is the total number of members in the team.
+
+- **Highest Member:**
+  $$\text{Team Score} = \max_{j} (\text{Member Score}_j)$$
+  *(Used for specialist-led or asymmetric team configurations).*
+
+---
+
+### 5. Deterministic Tie-Breaking Formula (`ranking.py`)
+Eligible teams are sorted by `team_score` in descending order. If two teams have the exact same team score, the engine evaluates the ordered `tie_break` chain defined in the configuration (defaulting to `["team_score", "team_id"]`):
+1. **Primary Key:** `team_score` (Descending: highest score first).
+2. **Secondary/Fallback Key:** `team_id` (Ascending lexicographical order: e.g., `T001` before `T002`).
+
+This ensures absolute cryptographic determinism: uploading the same dataset and configuration will *always* yield identical ranks down to the decimal place.
 
 ## 🚀 2. How to View & Run the Project
 
